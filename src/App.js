@@ -1,25 +1,64 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
-
+import axios from 'axios';
+import {ContextAllData} from './Context/ContextData';
+import SinglePage from "./Components/SinglePage/SinglePage";
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Modal from "./Components/Modal/Modal";
+import Header from "./Components/Header/Header";
 function App() {
+
+  const{apiData,setApiData,modalId}=React.useContext(ContextAllData);
+
+  const apiCall=async ()=>{
+    // const {data}=await axios.get("https://pokeapi.co/api/v2/pokemon/")
+    const {data}=await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
+    // console.log(data.results)
+
+   ImageUrl(data.results);
+
+   console.log(apiData)
+   
+  }
+
+  const ImageUrl=(res)=>{
+    res.map(async(ele)=>{
+      const {data}=await axios.get(ele.url);
+
+      setApiData(resData=>{
+       return [...resData,data]
+      
+      })
+    })
+  }
+
+  // console.log(apiData)
+
+  React.useEffect(()=>{
+    apiCall();
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+       <BrowserRouter>
+       <Routes>
+        <Route path="/" element={<SinglePage data={apiData}/>}/>
+       <Route path="/pokemon-info" element={<Modal id={modalId}/>}/>
+       </Routes>
+       
+    </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+// apiData && apiData.map((ele)=>{
+//   return(
+//     <>
+//     <img src={ele.sprites.front_default} alt="" />
+//     <p>{ele.name}</p>
+//     <p>{ele.id}</p>
+//     </>
+//   )
+// })

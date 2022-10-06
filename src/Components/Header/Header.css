@@ -1,0 +1,19 @@
+.header-main-div{
+    height: 5rem;
+    background-color: aquamarine;
+   
+}
+
+.header-content-div{
+    display: flex;
+    position:relative;
+    justify-content: center;
+    list-style: none;
+    height: 100%;
+    padding-top: 1rem; 
+}
+
+.heading-pokemon{
+    position: absolute;
+    left: 2rem;
+}
