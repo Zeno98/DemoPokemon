@@ -38,7 +38,7 @@ const Pagination = () => {
     },[counter])
 
   return (
-    <div>
+    <div className='btn-main-div'>
         <button className='btn btn-primary' onClick={()=>buttonClick("prev")}>Previous</button>
         <button className='btn btn-primary' onClick={()=>buttonClick("next")}>Next</button>
     </div>
