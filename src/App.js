@@ -6,13 +6,14 @@ import SinglePage from "./Components/SinglePage/SinglePage";
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Modal from "./Components/Modal/Modal";
 import Header from "./Components/Header/Header";
+import Pagination from "./Components/Pagination/Pagination";
 function App() {
 
-  const{apiData,setApiData,modalId}=React.useContext(ContextAllData);
+  const{apiData,setApiData,modalId,showPerPage}=React.useContext(ContextAllData);
 
   const apiCall=async ()=>{
     // const {data}=await axios.get("https://pokeapi.co/api/v2/pokemon/")
-    const {data}=await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
+    const {data}=await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=327&offset=0`)
     // console.log(data.results)
 
    ImageUrl(data.results);
@@ -47,6 +48,7 @@ function App() {
        </Routes>
        
     </BrowserRouter>
+    <Pagination/>
     </div>
   );
 }

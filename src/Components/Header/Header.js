@@ -1,7 +1,11 @@
 import React from 'react'
 import "./Header.css"
+import { ContextAllData } from '../../Context/ContextData'
 
 const Header = () => {
+
+    const{search,setSearch,handleSearch}=React.useContext(ContextAllData);
+
   return (
     <div className='header-main-div'>
         <div className='header-content-div'>
@@ -9,7 +13,8 @@ const Header = () => {
             <header className='heading-pokemon'>Pokemon</header>
         </li>
         <li>
-            <input className='' type="search" placeholder='search pokemon.....' />
+            <input className='search-bar' type="search" placeholder='search pokemon.....'
+            onChange={(e)=>{handleSearch(e.target.value)}} />
         </li>
 
         </div>

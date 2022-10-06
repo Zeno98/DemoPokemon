@@ -17,3 +17,9 @@
     position: absolute;
     left: 2rem;
 }
+
+.search-bar{
+    width: 25rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+}
