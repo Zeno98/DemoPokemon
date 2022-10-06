@@ -13,12 +13,10 @@ function App() {
 
   const apiCall=async ()=>{
    
-    const {data}=await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=327&offset=0`)
+    const {data}=await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=327&offset=0`) //api call
   
 
-   ImageUrl(data.results);
-
-   console.log(apiData)
+   ImageUrl(data.results); // passing the initial data fetch from th api
    
   }
 
@@ -26,7 +24,7 @@ function App() {
     res.map(async(ele)=>{
       const {data}=await axios.get(ele.url);
 
-      setApiData(resData=>{
+      setApiData(resData=>{   // storing url of particular pokemon
        return [...resData,data]
       
       })
@@ -36,15 +34,17 @@ function App() {
 
 
   React.useEffect(()=>{
-    apiCall();
+    apiCall();  // calling the apiCall method
   },[])
   return (
     <div className="App">
       <Header/>
        <BrowserRouter>
        <Routes>
-        <Route path="/" element={<SinglePage data={apiData}/>}/>
+        <Route path="/" element={<SinglePage data={apiData}/>}/>  
+        {/* to display all pokemons */}
        <Route path="/pokemon-info" element={<Modal id={modalId}/>}/>
+       {/* to display details of particular pokemon */}
        </Routes>
        
     </BrowserRouter>

@@ -7,8 +7,6 @@ const SinglePage = ({ data }) => {
 
   const { setModalId, pageNumber, showPerPage, search } = React.useContext(ContextAllData)
 
-  console.log(showPerPage)
-
   const handleModal = (id) => {
     setModalId(id)
   }
@@ -19,7 +17,7 @@ const SinglePage = ({ data }) => {
         {
           (
 
-            search.length > 0 ?
+            search.length > 0 ? // checking search text if text length is greater than 0 then  data && data.filter will run 
               (
                 <>
                   {
@@ -27,11 +25,10 @@ const SinglePage = ({ data }) => {
                       return ele.name.toLowerCase().includes(search.toLowerCase());
                     }).map((ele) => {
                       return (
-                        <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pokemon-item">
+                        <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pokemon-item" >
                           <div>
                             <Link to="/pokemon-info">
                               <img src={ele.sprites.front_default} alt=""
-                                onClick={() => { handleModal(ele.id) }}
                               />
                             </Link>
 
@@ -65,17 +62,18 @@ const SinglePage = ({ data }) => {
               ) :
               (
                 <>
-                  {
+                  { // when page load then this code runs
                     data ? data.slice(pageNumber.start, pageNumber.end).map((ele) => {
                       return (
-                        <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pokemon-item">
-
+                      
+                        <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pokemon-item"  >
+                        <Link to="/pokemon-info" onClick={() => { handleModal(ele.id) }}>
                           <div>
-                          <Link to="/pokemon-info">
+                          
                             <img src={ele.sprites.front_default} alt=""
-                              onClick={() => { handleModal(ele.id) }}
+                              
                             />
-                          </Link>
+                          
 
                           <div className='pokemonName'>
                               <span>{ele.name}</span>
@@ -95,7 +93,9 @@ const SinglePage = ({ data }) => {
                               )}
                             </div>
                           </div>
+                          </Link>
                         </div>
+                        
                       )
                     })
                       : "loading..."
@@ -131,3 +131,4 @@ export default SinglePage
 
 
 
+// onClick={() => { handleModal(ele.id) }}

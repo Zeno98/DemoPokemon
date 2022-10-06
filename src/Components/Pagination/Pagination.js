@@ -8,7 +8,7 @@ const Pagination = () => {
     const [counter,setCounter]=React.useState(1);
     let totalItemCount=327;
     let rem=Math.ceil(totalItemCount/showPerPage)
-    console.log("rem",rem);
+    
 
     const buttonClick=(type)=>{
         if(type==="prev"){
@@ -31,8 +31,6 @@ const Pagination = () => {
     }
     React.useEffect(()=>{
         const value=showPerPage * counter;
-        console.log("start", value-showPerPage);
-        console.log("end", value )
 
         onPaginationChange(value-showPerPage,value)
 

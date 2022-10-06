@@ -26,3 +26,12 @@
     border: none;
     padding-left: 1rem;
 }
+
+@media (max-width:620px) {
+    .heading-pokemon{
+       top:0;
+    }
+    .search-bar{
+        margin-top: 1rem;
+    }
+}

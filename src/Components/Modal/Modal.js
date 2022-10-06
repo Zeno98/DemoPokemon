@@ -9,7 +9,7 @@ const Modal = ({ id }) => {
     const { modalInfo, setModalInfo } = React.useContext(ContextAllData);
 
     const modalCall = async () => {
-        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`) // call api with particular id
         setModalInfo([data])
 
     }
@@ -17,7 +17,7 @@ const Modal = ({ id }) => {
     React.useEffect(() => {
         modalCall();
 
-    }, [id])
+    }, [id]) // it call modalCall() with change in id
 
     return (
         <div>

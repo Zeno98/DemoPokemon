@@ -14,7 +14,7 @@ const ContextData = ({children}) => {
       end:showPerPage
     });
 
-  const onPaginationChange=(start,end)=>{
+  const onPaginationChange=(start,end)=>{ // to set start and end page number
     setPageNumber({
       start:start,
       end:end
@@ -22,9 +22,8 @@ const ContextData = ({children}) => {
 
   }
 
-  const handleSearch=(searchValue)=>{
+  const handleSearch=(searchValue)=>{  //to store text from search bar in search variable for finding particular pokemon
     setSearch(searchValue);
-    console.log(searchValue);
   }
 
   return (
