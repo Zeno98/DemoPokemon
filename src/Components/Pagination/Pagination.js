@@ -1,5 +1,6 @@
 import React from 'react'
 import { ContextAllData } from '../../Context/ContextData'
+import "./Pagination.css";
 
 const Pagination = () => {
 
