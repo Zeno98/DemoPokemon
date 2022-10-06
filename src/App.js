@@ -12,9 +12,9 @@ function App() {
   const{apiData,setApiData,modalId,showPerPage}=React.useContext(ContextAllData);
 
   const apiCall=async ()=>{
-    // const {data}=await axios.get("https://pokeapi.co/api/v2/pokemon/")
+   
     const {data}=await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=327&offset=0`)
-    // console.log(data.results)
+  
 
    ImageUrl(data.results);
 
@@ -33,7 +33,7 @@ function App() {
     })
   }
 
-  // console.log(apiData)
+
 
   React.useEffect(()=>{
     apiCall();
@@ -54,13 +54,3 @@ function App() {
 }
 
 export default App;
-
-// apiData && apiData.map((ele)=>{
-//   return(
-//     <>
-//     <img src={ele.sprites.front_default} alt="" />
-//     <p>{ele.name}</p>
-//     <p>{ele.id}</p>
-//     </>
-//   )
-// })

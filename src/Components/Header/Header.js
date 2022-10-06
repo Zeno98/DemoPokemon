@@ -9,13 +9,13 @@ const Header = () => {
   return (
     <div className='header-main-div'>
         <div className='header-content-div'>
-        <li>
+        <div>
             <header className='heading-pokemon'>Pokemon</header>
-        </li>
-        <li>
+        </div>
+        <div>
             <input className='search-bar' type="search" placeholder='search pokemon.....'
             onChange={(e)=>{handleSearch(e.target.value)}} />
-        </li>
+        </div>
 
         </div>
         
